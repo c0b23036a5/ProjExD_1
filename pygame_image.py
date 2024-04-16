@@ -19,6 +19,10 @@ def main():
     scr_x=0
     Kktn_rct= Kktn.get_rect()
     Kktn_rct.center=300,200
+    L_=1
+    R_=1
+    U_=1
+    D_=1
     while True:
         
         for event in pg.event.get():
@@ -26,12 +30,27 @@ def main():
         key_lst=pg.key.get_pressed()
         if key_lst[pg.K_DOWN]:
             Kktn_rct.move_ip((0,+1))
+            D_=0
+        else:
+            D_=1
         if key_lst[pg.K_LEFT]:
             Kktn_rct.move_ip((-1,0))
+            L_=0
+        else:
+            L_=1
         if key_lst[pg.K_RIGHT]:
-            Kktn_rct.move_ip((+1,0))
+            Kktn_rct.move_ip((+2,0))
+            R_=0
+        else:
+            R_=1
         if key_lst[pg.K_UP]:
             Kktn_rct.move_ip((0,-1))
+            U_=0
+        else:
+            U_=1
+        if L_+R_+U_+D_==4:
+            Kktn_rct.move_ip((-1,0))
+            
         if scr_x<=-3200:
             scr_x=0
             x=0
