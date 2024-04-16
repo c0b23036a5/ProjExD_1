@@ -14,14 +14,26 @@ def main():
     Kktn = pg.image.load("fig/3.png")
     Kktn = pg.transform.flip(Kktn,True,False)
     tmr = 0
+    slide_x=0
+    scr_x=0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0])
+        
+        if scr_x<=-800:
+            scr_x=0
+            slide_x=0
+        scr_x=-slide_x*20
+        
+
+        screen.blit(bg_img, [scr_x, 0])
         screen.blit(Kktn,[300,200])
+        
+
         pg.display.update()
-        tmr += 1        
+        tmr += 1 
+        slide_x +=1       
         clock.tick(10)
 
 
